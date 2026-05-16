@@ -1,0 +1,60 @@
+# Datos locales de la aplicación
+tasks.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+
+# Empaquetado / instalación
+build/
+dist/
+*.egg-info/
+*.egg
+pip-wheel-metadata/
+.installed.cfg
+
+# Pruebas y cobertura
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Type checkers y linters
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Editores e IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Sistema operativo (Ubuntu / Linux)
+.DS_Store
+Thumbs.db
+desktop.ini
+.directory
+.fuse_hidden*
+.nfs*
