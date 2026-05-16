@@ -29,6 +29,25 @@ def complete_task(tasks: list[dict], task_id: int) -> str:
     return "not_found"
 
 
+def edit_task(tasks: list[dict], task_id: int, new_title: str) -> str:
+    for task in tasks:
+        if int(task.get("id", -1)) == task_id:
+            if task.get("title", "").strip() == new_title.strip():
+                return "unchanged"
+            task["title"] = new_title.strip()
+            return "edited"
+    return "not_found"
+
+
+def search_tasks(tasks: list[dict], query: str) -> list[dict]:
+    needle = query.casefold()
+    return [
+        task
+        for task in tasks
+        if needle in str(task.get("title", "")).casefold()
+    ]
+
+
 def delete_task(tasks: list[dict], task_id: int) -> bool:
     before = len(tasks)
     remaining = [t for t in tasks if int(t.get("id", -1)) != task_id]

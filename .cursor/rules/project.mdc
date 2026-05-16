@@ -68,8 +68,9 @@ Cada tarea debe tener esta forma:
 - Guardar después de agregar una tarea válida.
 - Guardar después de completar una tarea pendiente.
 - Guardar después de eliminar una tarea existente.
-- No guardar al listar tareas.
-- No guardar si la operación no produjo cambios, como completar una tarea ya completada, completar un ID inexistente o eliminar un ID inexistente.
+- Guardar después de editar el título de una tarea existente cuando el título cambió realmente.
+- No guardar al listar tareas ni al buscar por texto.
+- No guardar si la operación no produjo cambios, como completar una tarea ya completada, completar un ID inexistente, eliminar un ID inexistente o editar con el mismo título.
 - Si `tasks.json` no existe, cargar una lista vacía.
 - Si `tasks.json` está vacío o corrupto, informar el error de forma clara.
 - Mantener funciones pequeñas y legibles.

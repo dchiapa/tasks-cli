@@ -4,7 +4,7 @@ Aplicación de consola en Python para gestionar tareas simples. Usa solo la libr
 
 ## Versión actual
 
-`1.0.0` — definida en `task_cli.__version__`.
+`1.1.0` — definida en `task_cli.__version__`.
 
 ## Requisitos
 
@@ -61,9 +61,9 @@ Estado de cada release: **publicada** (disponible) o **planificada** (definida, 
 | Versión   | Estado      | Resumen                                      |
 |-----------|-------------|----------------------------------------------|
 | `1.0.0`   | Publicada   | CRUD básico, menú por consola, persistencia  |
-| `1.1.0`   | Planificada | Editar título y buscar tareas por texto      |
+| `1.1.0`   | Publicada   | Editar título y buscar tareas por texto      |
 
-> La “v2” del plan funcional corresponde a **`1.1.0`**: agrega capacidades sin romper el modelo de datos ni el formato de `tasks.json`. Un **`2.0.0`** se reservaría para cambios incompatibles.
+> Un **`2.0.0`** se reservaría para cambios incompatibles (p. ej. nuevo formato de `tasks.json`).
 
 ---
 
@@ -99,49 +99,29 @@ Estado de cada release: **publicada** (disponible) o **planificada** (definida, 
 
 ---
 
-### 1.1.0 — Planificada
+### 1.1.0 — Publicada
 
-**Objetivo**
+**Alcance**
 
-Ampliar el menú con edición de títulos y búsqueda por texto, sin cambiar el modelo de datos ni las dependencias del proyecto.
+- Editar el título de una tarea existente por `id` (opción 5 del menú).
+- Buscar tareas cuyo título contenga un texto dado, sin distinguir mayúsculas/minúsculas (opción 6).
+- Salir pasa a la opción 7 del menú.
 
-**Alcance propuesto**
+**Comportamiento de guardado**
 
-1. **Editar título**
-   - Nueva opción en el menú: elegir una tarea por `id` e ingresar un título nuevo.
-   - Validar igual que al agregar: no permitir título vacío ni solo espacios.
-   - Si el `id` no existe, informar y no modificar datos.
-   - Si el título nuevo es igual al actual (tras normalizar espacios al inicio/fin), informar que no hubo cambios y **no guardar**.
-   - Si el título cambia, actualizar la tarea y **guardar** `tasks.json`.
-
-2. **Buscar por texto en el título**
-   - Nueva opción en el menú: ingresar un texto de búsqueda.
-   - Mostrar las tareas cuyo `title` contenga ese texto (comparación sin distinguir mayúsculas/minúsculas).
-   - Si no hay coincidencias, informarlo claramente.
-   - **No modificar** la lista ni **guardar** el archivo.
-
-**Reglas de comportamiento (1.1.0)**
-
-| Operación              | Modifica datos | Guarda |
-|------------------------|----------------|--------|
-| Editar título (cambio real) | Sí        | Sí     |
-| Editar con mismo título     | No        | No     |
-| Editar `id` inexistente     | No        | No     |
-| Editar con título inválido  | No        | No     |
-| Buscar por texto            | No        | No     |
+| Operación                   | Guarda |
+|-----------------------------|--------|
+| Editar título (cambio real) | Sí     |
+| Editar con mismo título     | No     |
+| Editar `id` inexistente     | No     |
+| Editar con título inválido  | No     |
+| Buscar por texto            | No     |
 
 **Fuera de alcance en 1.1.0**
 
 - Cambiar el modelo JSON (`id`, `title`, `completed` se mantienen).
 - Editar `completed` desde la opción de edición (sigue siendo la opción de completar).
 - Búsqueda por `id`, por estado completado o por campos que no existan.
-- Dependencias externas, API HTTP, interfaz gráfica o tests automatizados (salvo que se pidan explícitamente).
-
-**Archivos previstos a tocar en la implementación**
-
-- `task_cli/tasks.py` — funciones `edit_task` y `search_tasks` (o equivalentes).
-- `task_cli/cli.py` — nuevas opciones de menú, mensajes y llamadas a guardado.
-- `README.md` — actualizar el estado de `1.1.0` a *publicada* y el historial de releases al cerrar la versión.
 
 ---
 
