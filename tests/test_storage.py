@@ -4,7 +4,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from task_cli import storage
+from tasks_cli import storage
 
 
 class StorageTests(unittest.TestCase):

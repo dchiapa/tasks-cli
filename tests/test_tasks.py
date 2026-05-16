@@ -1,6 +1,6 @@
 import unittest
 
-from task_cli import tasks as task_ops
+from tasks_cli import tasks as task_ops
 
 
 def _task(task_id: int, title: str, completed: bool = False) -> dict:

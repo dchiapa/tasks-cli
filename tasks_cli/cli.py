@@ -1,5 +1,5 @@
-from task_cli import storage
-from task_cli import tasks as task_ops
+from tasks_cli import storage
+from tasks_cli import tasks as task_ops
 
 
 def _prompt_choice() -> str:

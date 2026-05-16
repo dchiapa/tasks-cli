@@ -1,9 +1,9 @@
 ---
-description: Reglas generales del proyecto task-cli
+description: Reglas generales del proyecto tasks-cli
 alwaysApply: true
 ---
 
-# Reglas del proyecto task-cli
+# Reglas del proyecto tasks-cli
 
 ## Objetivo
 
@@ -22,11 +22,11 @@ Este proyecto es una aplicación de consola en Python para gestionar tareas simp
 La estructura esperada es:
 
 ```text
-task-cli/
+tasks-cli/
 ├── .cursor
 │   └── rules
 │       └── project.mdc
-├── task_cli/
+├── tasks_cli/
 │   ├── __init__.py
 │   ├── __main__.py
 │   ├── cli.py
@@ -43,7 +43,7 @@ task-cli/
 - `cli.py`: menú, entrada del usuario y salida por consola.
 - `tasks.py`: lógica de negocio sobre la lista de tareas.
 - `storage.py`: carga y guardado de `tasks.json`.
-- `__main__.py`: punto de entrada para `python -m task_cli`.
+- `__main__.py`: punto de entrada para `python -m tasks_cli`.
 
 ## Modelo de datos
 

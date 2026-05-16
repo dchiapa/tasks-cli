@@ -1,10 +1,10 @@
-# task-cli
+# tasks-cli
 
 Aplicación de consola en Python para gestionar tareas simples. Usa solo la librería estándar y persiste los datos en `tasks.json` en la raíz del proyecto.
 
 ## Versión actual
 
-`1.2.0` — definida en `task_cli.__version__`.
+`1.3.0` — definida en `tasks_cli.__version__`.
 
 ## Requisitos
 
@@ -41,14 +41,14 @@ python --version
 
 ## Uso
 
-Ejecutá la aplicación **desde la raíz del proyecto** (donde está la carpeta `task_cli/`):
+Ejecutá la aplicación **desde la raíz del proyecto** (donde está la carpeta `tasks_cli/`):
 
 ```bash
 # Linux / macOS
-python3 -m task_cli
+python3 -m tasks_cli
 
 # Windows
-python -m task_cli
+python -m tasks_cli
 ```
 
 Se abrirá el menú interactivo por consola. Los datos se guardan en `tasks.json` en esa misma carpeta (el archivo se crea al guardar la primera tarea).
@@ -70,11 +70,11 @@ Salida esperada al final: `OK` y el total de tests ejecutados (20 en la versión
 ## Estructura
 
 ```text
-task-cli/
+tasks-cli/
 ├── .cursor/
 │   └── rules/
 │       └── project.mdc
-├── task_cli/              # Código de la aplicación
+├── tasks_cli/             # Código de la aplicación
 ├── tests/                 # Pruebas automatizadas
 ├── tasks.json             # Datos locales (generado en ejecución, no versionado)
 ├── .gitattributes
@@ -100,7 +100,7 @@ El archivo `tasks.json` contiene una lista de esos objetos.
 
 Este proyecto sigue [Versionado Semántico 2.0.0](https://semver.org/lang/es/): `MAYOR.MENOR.PARCHE`.
 
-| Componente | Cuándo incrementarlo en task-cli                          |
+| Componente | Cuándo incrementarlo en tasks-cli                         |
 |------------|-----------------------------------------------------------|
 | **MAYOR**  | Cambios incompatibles (p. ej. nuevo formato de `tasks.json`) |
 | **MENOR**  | Funcionalidad nueva compatible con versiones anteriores   |
@@ -110,11 +110,21 @@ Estado de cada release: **publicada** (disponible) o **planificada** (definida, 
 
 | Versión   | Estado      | Resumen                                      |
 |-----------|-------------|----------------------------------------------|
+| `1.3.0`   | Publicada   | Nomenclatura alineada al repo (`tasks-cli`)  |
 | `1.2.0`   | Publicada   | Suite de pruebas automatizadas (`unittest`)  |
 | `1.1.0`   | Publicada   | Editar título y buscar tareas por texto      |
 | `1.0.0`   | Publicada   | CRUD básico, menú por consola, persistencia  |
 
 > Un **`2.0.0`** se reservaría para cambios incompatibles (p. ej. nuevo formato de `tasks.json`).
+
+---
+
+### 1.3.0 — Publicada
+
+**Alcance**
+
+- Proyecto y paquete renombrados a `tasks-cli` / `tasks_cli` (antes `task-cli` / `task_cli`).
+- Comando de ejecución: `python -m tasks_cli`.
 
 ---
 
