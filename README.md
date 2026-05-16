@@ -2,6 +2,10 @@
 
 Aplicación de consola en Python para gestionar tareas simples. Usa solo la librería estándar y persiste los datos en `tasks.json` en la raíz del proyecto.
 
+## Versión actual
+
+`1.0.0` — definida en `task_cli.__version__`.
+
 ## Requisitos
 
 - Python 3.10 o superior
@@ -16,7 +20,6 @@ python -m task_cli
 
 ## Estructura
 
-```text
 ```text
 task-cli/
 ├── .cursor/
@@ -43,18 +46,28 @@ El archivo `tasks.json` contiene una lista de esos objetos.
 
 ---
 
-## Versiones
+## Versionado (SemVer)
 
-Estado de cada versión: **publicada** (disponible) o **planificada** (definida, sin implementar).
+Este proyecto sigue [Versionado Semántico 2.0.0](https://semver.org/lang/es/): `MAYOR.MENOR.PARCHE`.
 
-| Versión | Estado      | Resumen                                      |
-|---------|-------------|----------------------------------------------|
-| v1      | Publicada   | CRUD básico, menú por consola, persistencia  |
-| v2      | Planificada | Editar título y buscar tareas por texto      |
+| Componente | Cuándo incrementarlo en task-cli                          |
+|------------|-----------------------------------------------------------|
+| **MAYOR**  | Cambios incompatibles (p. ej. nuevo formato de `tasks.json`) |
+| **MENOR**  | Funcionalidad nueva compatible con versiones anteriores   |
+| **PARCHE** | Correcciones de bugs sin cambiar el comportamiento esperado |
+
+Estado de cada release: **publicada** (disponible) o **planificada** (definida, sin implementar).
+
+| Versión   | Estado      | Resumen                                      |
+|-----------|-------------|----------------------------------------------|
+| `1.0.0`   | Publicada   | CRUD básico, menú por consola, persistencia  |
+| `1.1.0`   | Planificada | Editar título y buscar tareas por texto      |
+
+> La “v2” del plan funcional corresponde a **`1.1.0`**: agrega capacidades sin romper el modelo de datos ni el formato de `tasks.json`. Un **`2.0.0`** se reservaría para cambios incompatibles.
 
 ---
 
-### v1 — Publicada
+### 1.0.0 — Publicada
 
 **Alcance**
 
@@ -78,7 +91,7 @@ Estado de cada versión: **publicada** (disponible) o **planificada** (definida,
 | Eliminar tarea existente          | Sí     |
 | Eliminar `id` inexistente         | No     |
 
-**Fuera de alcance en v1**
+**Fuera de alcance en 1.0.0**
 
 - Editar el título de una tarea.
 - Buscar o filtrar tareas.
@@ -86,7 +99,7 @@ Estado de cada versión: **publicada** (disponible) o **planificada** (definida,
 
 ---
 
-### v2 — Planificada
+### 1.1.0 — Planificada
 
 **Objetivo**
 
@@ -107,7 +120,7 @@ Ampliar el menú con edición de títulos y búsqueda por texto, sin cambiar el 
    - Si no hay coincidencias, informarlo claramente.
    - **No modificar** la lista ni **guardar** el archivo.
 
-**Reglas de comportamiento (v2)**
+**Reglas de comportamiento (1.1.0)**
 
 | Operación              | Modifica datos | Guarda |
 |------------------------|----------------|--------|
@@ -117,7 +130,7 @@ Ampliar el menú con edición de títulos y búsqueda por texto, sin cambiar el 
 | Editar con título inválido  | No        | No     |
 | Buscar por texto            | No        | No     |
 
-**Fuera de alcance en v2**
+**Fuera de alcance en 1.1.0**
 
 - Cambiar el modelo JSON (`id`, `title`, `completed` se mantienen).
 - Editar `completed` desde la opción de edición (sigue siendo la opción de completar).
@@ -128,7 +141,7 @@ Ampliar el menú con edición de títulos y búsqueda por texto, sin cambiar el 
 
 - `task_cli/tasks.py` — funciones `edit_task` y `search_tasks` (o equivalentes).
 - `task_cli/cli.py` — nuevas opciones de menú, mensajes y llamadas a guardado.
-- `README.md` — actualizar el estado de v2 a *publicada* al cerrar la versión.
+- `README.md` — actualizar el estado de `1.1.0` a *publicada* y el historial de releases al cerrar la versión.
 
 ---
 
