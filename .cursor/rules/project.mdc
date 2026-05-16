@@ -1,0 +1,99 @@
+---
+description: Reglas generales del proyecto task-cli
+alwaysApply: true
+---
+
+# Reglas del proyecto task-cli
+
+## Objetivo
+
+Este proyecto es una aplicación de consola en Python para gestionar tareas simples.
+
+## Restricciones técnicas
+
+- Usar solo la librería estándar de Python.
+- No agregar dependencias externas.
+- No agregar frameworks.
+- No cambiar la estructura del proyecto sin pedir aprobación.
+- No implementar funcionalidades no solicitadas.
+
+## Estructura del proyecto
+
+La estructura esperada es:
+
+```text
+task-cli/
+├── .cursor
+│   └── rules
+│       └── project.mdc
+├── task_cli/
+│   ├── __init__.py
+│   ├── __main__.py
+│   ├── cli.py
+│   ├── tasks.py
+│   └── storage.py
+├── .gitignore
+└── tasks.json
+```
+
+`tasks.json` es generado por la aplicación en tiempo de ejecución y no debe versionarse; debe estar listado en `.gitignore`.
+
+## Responsabilidades por archivo
+
+- `cli.py`: menú, entrada del usuario y salida por consola.
+- `tasks.py`: lógica de negocio sobre la lista de tareas.
+- `storage.py`: carga y guardado de `tasks.json`.
+- `__main__.py`: punto de entrada para `python -m task_cli`.
+
+## Modelo de datos
+
+Cada tarea debe tener esta forma:
+
+```json
+{
+  "id": 1,
+  "title": "Estudiar Docker",
+  "completed": false
+}
+```
+## Reglas de negocio
+
+- No se deben permitir tareas con título vacío o compuesto solo por espacios.
+- Se permiten tareas con títulos repetidos.
+- Cada tarea se identifica de forma única por su `id`, no por su `title`.
+
+## Reglas de comportamiento
+
+- Guardar solo después de operaciones que modifiquen datos realmente.
+- Guardar después de agregar una tarea válida.
+- Guardar después de completar una tarea pendiente.
+- Guardar después de eliminar una tarea existente.
+- No guardar al listar tareas.
+- No guardar si la operación no produjo cambios, como completar una tarea ya completada, completar un ID inexistente o eliminar un ID inexistente.
+- Si `tasks.json` no existe, cargar una lista vacía.
+- Si `tasks.json` está vacío o corrupto, informar el error de forma clara.
+- Mantener funciones pequeñas y legibles.
+
+## Estilo de trabajo
+
+Antes de hacer cambios grandes:
+
+1. Explicar brevemente el plan.
+2. Mostrar qué archivos se van a modificar.
+3. No modificar código fuera del alcance pedido.
+4. Mantener los cambios chicos y auditables.
+
+## Gestión proactiva de `.gitignore`
+
+- Al iniciar un proyecto, revisar si existe un archivo `.gitignore`.
+- Si no existe, proponer y crear un `.gitignore` adecuado para el stack, herramientas, sistema operativo y arquitectura del proyecto.
+- Si existe, revisar si cubre los archivos generados, datos locales, cachés, logs, entornos virtuales, artefactos de build y secretos típicos del proyecto.
+- Cuando se actualice este archivo de reglas (`.cursor/rules/project.mdc`) con cambios que afecten el stack, herramientas, arquitectura o flujo de trabajo, revisar si `.gitignore` también necesita actualizarse.
+- Si `.gitignore` necesita cambios, aplicarlos directamente y explicar brevemente qué se agregó o ajustó.
+- No ignorar archivos fuente, documentación importante ni configuración versionable del proyecto sin justificarlo.
+- Mantener versionables las reglas del proyecto, incluyendo `.cursor/rules/`.
+
+## Seguridad
+- No borrar archivos del proyecto salvo pedido explícito.
+- No sobrescribir `tasks.json` con datos destructivos sin advertirlo.
+- No ejecutar comandos destructivos.
