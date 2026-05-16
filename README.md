@@ -9,22 +9,63 @@ Aplicación de consola en Python para gestionar tareas simples. Usa solo la libr
 ## Requisitos
 
 - Python 3.10 o superior
+- Git (solo para clonar el repositorio)
 
-## Ejecución
+No se requieren dependencias externas ni `pip install`: la aplicación usa únicamente la librería estándar de Python.
 
-Desde la raíz del proyecto:
+## Instalación
+
+Cloná el repositorio y entrá al directorio del proyecto:
 
 ```bash
+git clone https://github.com/dchiapa/tasks-cli.git
+cd tasks-cli
+```
+
+Con SSH:
+
+```bash
+git clone git@github.com:dchiapa/tasks-cli.git
+cd tasks-cli
+```
+
+Verificá que tenés una versión compatible de Python:
+
+```bash
+# Linux / macOS
+python3 --version
+
+# Windows (PowerShell o CMD)
+python --version
+```
+
+## Uso
+
+Ejecutá la aplicación **desde la raíz del proyecto** (donde está la carpeta `task_cli/`):
+
+```bash
+# Linux / macOS
+python3 -m task_cli
+
+# Windows
 python -m task_cli
 ```
 
+Se abrirá el menú interactivo por consola. Los datos se guardan en `tasks.json` en esa misma carpeta (el archivo se crea al guardar la primera tarea).
+
 ## Pruebas
 
-Desde la raíz del proyecto (solo librería estándar, `unittest`):
+Para correr la suite de pruebas, también desde la raíz del proyecto:
 
 ```bash
+# Linux / macOS
+python3 -m unittest discover -s tests -v
+
+# Windows
 python -m unittest discover -s tests -v
 ```
+
+Salida esperada al final: `OK` y el total de tests ejecutados (20 en la versión `1.2.0`).
 
 ## Estructura
 
@@ -69,11 +110,48 @@ Estado de cada release: **publicada** (disponible) o **planificada** (definida, 
 
 | Versión   | Estado      | Resumen                                      |
 |-----------|-------------|----------------------------------------------|
-| `1.0.0`   | Publicada   | CRUD básico, menú por consola, persistencia  |
-| `1.1.0`   | Publicada   | Editar título y buscar tareas por texto      |
 | `1.2.0`   | Publicada   | Suite de pruebas automatizadas (`unittest`)  |
+| `1.1.0`   | Publicada   | Editar título y buscar tareas por texto      |
+| `1.0.0`   | Publicada   | CRUD básico, menú por consola, persistencia  |
 
 > Un **`2.0.0`** se reservaría para cambios incompatibles (p. ej. nuevo formato de `tasks.json`).
+
+---
+
+### 1.2.0 — Publicada
+
+**Alcance**
+
+- Suite de pruebas en `tests/` con `unittest` (solo librería estándar).
+- `test_tasks.py`: agregar, completar, editar, buscar y eliminar tareas.
+- `test_storage.py`: carga y guardado con archivos temporales aislados.
+
+---
+
+### 1.1.0 — Publicada
+
+**Alcance**
+
+- Editar el título de una tarea existente por `id` (opción 5 del menú).
+- Buscar tareas cuyo título contenga un texto dado, sin distinguir mayúsculas/minúsculas (opción 6).
+- Salir pasa a la opción 7 del menú.
+
+**Comportamiento de guardado**
+
+| Operación                   | Guarda |
+|-----------------------------|--------|
+| Editar título (cambio real) | Sí     |
+| Editar con mismo título     | No     |
+| Editar `id` inexistente     | No     |
+| Editar con título inválido  | No     |
+| Buscar por texto            | No     |
+
+**Fuera de alcance en 1.1.0**
+
+- Cambiar el modelo JSON (`id`, `title`, `completed` se mantienen).
+- Editar `completed` desde la opción de edición (sigue siendo la opción de completar).
+- Búsqueda por `id`, por estado completado o por campos que no existan.
+- Pruebas automatizadas (incorporadas en `1.2.0`).
 
 ---
 
@@ -106,43 +184,6 @@ Estado de cada release: **publicada** (disponible) o **planificada** (definida, 
 - Editar el título de una tarea.
 - Buscar o filtrar tareas.
 - Prioridades, fechas, etiquetas u otros campos.
-
----
-
-### 1.1.0 — Publicada
-
-**Alcance**
-
-- Editar el título de una tarea existente por `id` (opción 5 del menú).
-- Buscar tareas cuyo título contenga un texto dado, sin distinguir mayúsculas/minúsculas (opción 6).
-- Salir pasa a la opción 7 del menú.
-
-**Comportamiento de guardado**
-
-| Operación                   | Guarda |
-|-----------------------------|--------|
-| Editar título (cambio real) | Sí     |
-| Editar con mismo título     | No     |
-| Editar `id` inexistente     | No     |
-| Editar con título inválido  | No     |
-| Buscar por texto            | No     |
-
-**Fuera de alcance en 1.1.0**
-
-- Cambiar el modelo JSON (`id`, `title`, `completed` se mantienen).
-- Editar `completed` desde la opción de edición (sigue siendo la opción de completar).
-- Búsqueda por `id`, por estado completado o por campos que no existan.
-- Pruebas automatizadas (incorporadas en `1.2.0`).
-
----
-
-### 1.2.0 — Publicada
-
-**Alcance**
-
-- Suite de pruebas en `tests/` con `unittest` (solo librería estándar).
-- `test_tasks.py`: agregar, completar, editar, buscar y eliminar tareas.
-- `test_storage.py`: carga y guardado con archivos temporales aislados.
 
 ---
 
