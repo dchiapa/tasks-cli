@@ -65,7 +65,7 @@ python3 -m unittest discover -s tests -v
 python -m unittest discover -s tests -v
 ```
 
-Salida esperada al final: `OK` y el total de tests ejecutados (20 en la versión `1.2.0`).
+Salida esperada al final: `OK` y el total de tests ejecutados (20 en la versión `1.3.0`).
 
 ## Estructura
 
