@@ -5,6 +5,10 @@ alwaysApply: true
 
 # Reglas del proyecto tasks-cli
 
+## Versión actual
+
+`1.3.0` — definida en `tasks_cli.__version__` y documentada en `README.md`.
+
 ## Objetivo
 
 Este proyecto es una aplicación de consola en Python para gestionar tareas simples.
